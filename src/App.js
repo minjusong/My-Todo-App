@@ -1,24 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import Navbar from './component/Navbar.js'
+import TodoList from './component/TodoList.js'
+import TodoDetail from './component/TodoDetail.js'
+import CreateTodo from './component/CreateTodo.js'
+import Home from '/Users/minju/todo-app/src/page/Home.js'
+
 
 function App() {
   return (
+    <BrowserRouter>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <div className='content'>
+        <Routes>
+          {/* <Route path="/" element={<Home/>} /> */}
+          <Route path="/create" element={<CreateTodo/>} />
+          <Route path="/todos/:id" element={<TodoDetail/>} />
+        </Routes>
+      </div>
     </div>
+    </BrowserRouter>
+    
   );
 }
 
